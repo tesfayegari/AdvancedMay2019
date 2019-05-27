@@ -34,3 +34,11 @@ for(var value of cards){
 }
 var doc = document.getElementById("myCards");
 doc.innerHTML = myHtml;
+//Free api to pull some data from web. https://randomuser.me/api/?results=5000
+//Reference: https://randomuser.me/documentation#howto
+//https://randomuser.me/api/?page=3&results=10&seed=abc
+// $.ajax({
+//   url: 'https://randomuser.me/api/?results=100',
+//   dataType: 'json',
+//   success: data=> { console.log(data); }
+// });
