@@ -5,6 +5,44 @@
   <title>Bootstrap Example</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+  /*credit to: Denis Molodtsov Fixes for Bootstrap*/
+.ms-webpart-chrome-title *,
+.ms-webpart-chrome-title *:before,
+.ms-webpart-chrome-title *:after,
+#s4-ribbonrow *,
+#s4-ribbonrow *:before,
+#s4-ribbonrow *:after,
+.ms-webpart-controlBox,
+.ms-dialog *,
+.ms-dialog *:before,
+.ms-dialog *:after,
+#idStorefrontLayoutRoot *,
+#idStorefrontLayoutRoot *:before,
+#idStorefrontLayoutRoot *:after,
+.ms-dialog #s4-workspace *,
+.ms-dialog #s4-workspace *:before,
+.ms-dialog #s4-workspace *:after,
+.ms-dlgTitle *,
+.ms-dlgTitle *:before,
+.ms-dlgTitle *:after,
+.ms-srch-result-groups *,
+.ms-srch-result-groups *:before,
+.ms-srch-result-groups *:after,
+#Paging *,
+#Paging *:before,
+#Paging *:after,
+#Hero-WPQ2 *,
+#Hero-WPQ2 *:before,
+#Hero-WPQ2 *:after,
+#suiteBarButtons *,
+#suiteBarButtons *:before,
+#suiteBarButtons *:after {
+    -webkit-box-sizing: initial !important;
+    -moz-box-sizing: initial !important;
+    box-sizing: content-box !important;
+}
+  </style>
 </head>
 
 <body>
@@ -74,7 +112,26 @@
       //Code runs here
       getItems('MayDemo1').then(function(data){
         var results = data.d.results;
+        var myHtml = "";
         console.log(results);
+        var count = 0;
+        for(var item of results){
+          myHtml += `
+              <div class="card">
+                <div class="card-header">
+                  <a class="${count==0 ? '' : 'collapsed'} card-link" data-toggle="collapse" href="#collapse${item.ID}">
+                    ${item.Title}
+                  </a>
+                </div>
+                <div id="collapse${item.ID}" class="collapse ${count==0 ? 'show' : ''}" data-parent="#accordion">
+                  <div class="card-body">
+                    ${item.Description}
+                  </div>
+                </div>
+              </div>
+          `;
+          count++;
+        }
 
         });
     });
