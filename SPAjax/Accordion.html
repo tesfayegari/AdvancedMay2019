@@ -42,6 +42,9 @@
     -moz-box-sizing: initial !important;
     box-sizing: content-box !important;
 }
+h1#pageTitle {
+    display:none;
+}
   </style>
 </head>
 
@@ -49,48 +52,7 @@
 
   <div class="container">
     <div id="accordion">
-      <div class="card">
-        <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#collapseOne">
-            Collapsible Group Item #1
-          </a>
-        </div>
-        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-          <div class="card-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-            Collapsible Group Item #2
-          </a>
-        </div>
-        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-          <div class="card-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-            Collapsible Group Item #3
-          </a>
-        </div>
-        <div id="collapseThree" class="collapse" data-parent="#accordion">
-          <div class="card-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 
@@ -108,9 +70,10 @@
           });
     }
     
-    $(document).ready(function(){
-      //Code runs here
-      getItems('MayDemo1').then(function(data){
+    function makeAccordion(listName){
+      $(document).ready(function(){
+      //Code runs here      
+      getItems(listName).then(function(data){
         var results = data.d.results;
         var myHtml = "";
         console.log(results);
@@ -132,9 +95,11 @@
           `;
           count++;
         }
-
+        $('#accordion').html(myHtml);
         });
     });
+    }
+    
   </script>
 </body>
 
