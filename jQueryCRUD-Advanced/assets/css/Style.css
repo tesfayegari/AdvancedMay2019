@@ -1,0 +1,208 @@
+.addbtn {
+        float: right;
+        /* background: url('../images/plus-icon.png') no-repeat left center #0a2f7d; */
+        background-color: #0a2f7d;
+        background-position: 15px 14px;
+        color: #fff;
+        padding: 10px 20px 10px 40px;
+        margin-top: 20px;
+        cursor: pointer;
+        margin-right: 0px;
+        margin-bottom: 10px;
+}
+
+.cls-contriute {
+        background-color: #0a2f7d !important;
+        height: 50px;
+        padding-top: 3px;
+}
+
+.row {
+        margin-right: 0px;
+        margin-left: 0px;
+}
+
+.contributtitle {
+        color: #fff !important;
+        font-size: 25px !important;
+        margin-top: 7.5px !important;
+        background-color: #0a2f7d !important;
+}
+
+.LoadingDiv {
+        background-color: #419bc6 !important;
+}
+
+.ErMsg {
+        font-size: 13px;
+        color: red;
+        display: none;
+}
+
+.red {
+        color: red;
+}
+
+.cls-savecancel {
+        background-color: #0a2f7d !important;
+        color: white !important;
+}
+
+.cls-savecancel:hover {
+        background-color: #0a2f7d !important;
+        color: #fff !important;
+}
+
+#successMessage {
+        color: green !important;
+        font-size: 25px !important;
+        text-align: center;
+}
+
+.cls-sucees {
+        padding: 66px;
+        background-color: #edeff2 !important;
+        display: none;
+}
+
+/*.LoadingDiv{
+        padding: 66px;
+        background-color:#edeff2!important;
+        }*/
+.well {
+        border-radius: 0px;
+}
+
+table {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+}
+
+/*table td th {  
+        border: 1px solid gainsboro;  
+        }*/
+th {
+        text-align: center !important;
+        border: 1px solid #ffffff;
+}
+
+.tdBorder {
+        border: 1px solid #ffffff;
+}
+
+th {
+        background-color: #0a2f7d;
+        color: white;
+        padding: 13px;
+        text-align: center;
+}
+
+td {
+        text-align: left;
+}
+
+h1#pageTitle {
+        display: none;
+}
+
+h1#BtnAlign {
+        text-align: right;
+}
+
+input#AddBtn {
+        font-size: 18px;
+        font-weight: bolder;
+}
+
+.loader,
+.loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+}
+
+.loader1 {
+        color: white;
+}
+
+.loader {
+        margin: 60px auto;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-left: 1.1em solid #ffffff;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+        0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+        }
+
+        100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+        }
+}
+
+@keyframes load8 {
+        0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+        }
+
+        100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+        }
+}
+
+a:visited {
+        color: #212d3c;
+        text-decoration: none;
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit],
+button {
+        min-width: 6em;
+        padding: 7px 10px;
+        border: 1px solid #ffffff;
+        background-color: #124474;
+        margin-left: 10px;
+        font-size: 11px;
+        color: #444;
+}
+
+.ms-rtestate-field p,
+p.ms-rteElement-P {
+        display: none;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #0a2f7d;
+        border-color: #0a2f7d;
+}
+
+#subsiteList>tbody>tr>td>a:visited {
+        color: #c6efef;
+        text-decoration: none;
+}
