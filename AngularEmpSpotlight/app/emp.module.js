@@ -1,0 +1,1 @@
+empApp = angular.module('empApp', []);
