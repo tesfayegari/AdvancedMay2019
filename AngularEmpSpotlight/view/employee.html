@@ -5,7 +5,7 @@
             <div ng-repeat="employee in vm.employees" class="col-md-4 col-sm-6">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="http://bestjquery.com/tutorial/our-team/demo72/images/img-{{($index)%3 + 1}}.jpg" alt="{{employee.name}} Photo">
+                        <img src="{{employee.Photo}}" alt="{{employee.FullName}} Photo">
                     </div>
                     <ul class="social">
                         <li><a href="#" class="fab fa-facebook"></a></li>
@@ -13,11 +13,11 @@
                         <li><a href="#" class="fab fa-twitter"></a></li>
                     </ul>
                     <div class="team-content">
-                        <h3 class="title">{{employee.name}}</h3>
-                        <span class="post">{{employee.title}}</span>
+                        <h3 class="title">{{employee.Title}}</h3>
+                        <span class="post">{{employee.JobTitle}}</span>
                     </div>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac eros lacus. Sed commodo fringilla pharetra. Proin sodales risus et nunc volutpat.
+                        {{employee.Description}}
                     </p>
                 </div>
             </div>
