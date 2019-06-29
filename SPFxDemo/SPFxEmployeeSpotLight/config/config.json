@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "employee-spotlight-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/employeeSpotlight/EmployeeSpotlightWebPart.js",
+          "manifest": "./src/webparts/employeeSpotlight/EmployeeSpotlightWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "EmployeeSpotlightWebPartStrings": "lib/webparts/employeeSpotlight/loc/{locale}.js"
+  }
+}

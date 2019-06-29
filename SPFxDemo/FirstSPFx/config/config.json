@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "play-ground-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/playGround/PlayGroundWebPart.js",
+          "manifest": "./src/webparts/playGround/PlayGroundWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PlayGroundWebPartStrings": "lib/webparts/playGround/loc/{locale}.js"
+  }
+}

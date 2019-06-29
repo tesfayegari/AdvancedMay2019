@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hellow-world-1-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hellowWorld1/HellowWorld1WebPart.js",
+          "manifest": "./src/webparts/hellowWorld1/HellowWorld1WebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HellowWorld1WebPartStrings": "lib/webparts/hellowWorld1/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "mtm-advanced-sp-fx-1-client-side-solution",
+    "id": "840b3c5a-6b04-4af9-a9a7-b569e7bdecf9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/mtm-advanced-sp-fx-1.sppkg"
+  }
+}
