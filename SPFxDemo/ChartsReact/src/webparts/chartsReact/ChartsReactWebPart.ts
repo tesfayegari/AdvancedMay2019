@@ -6,6 +6,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 
 import * as strings from 'ChartsReactWebPartStrings';
 import ChartsReact from './components/ChartsReact';
@@ -13,6 +14,7 @@ import { IChartsReactProps } from './components/IChartsReactProps';
 
 export interface IChartsReactWebPartProps {
   description: string;
+  lists: string ; // Stores the list ID(s)
 }
 
 export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsReactWebPartProps> {
@@ -23,7 +25,7 @@ export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsRea
       ChartsReact,
       {
         description: this.properties.description,
-        siteName: this.context.pageContext.web.title,
+        siteName: this.properties.lists,
         spHttpClient: this.context.spHttpClient,
         siteUrl: this.context.pageContext.web.absoluteUrl
       }
@@ -53,6 +55,19 @@ export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsRea
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyFieldListPicker('lists', {
+                  label: 'Select a list',
+                  selectedList: this.properties.lists,
+                  includeHidden: false,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  disabled: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'listPickerFieldId'
                 })
               ]
             }

@@ -9,6 +9,7 @@ export interface IChartsReactProps {
 
 export interface ChartsReactState{
   data: any;
+  listName: string;
 }
 export interface ChartProps{
   data: any;

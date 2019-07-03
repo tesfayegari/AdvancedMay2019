@@ -4,12 +4,11 @@ import { IChartsReactProps, ChartsReactState, IListItem } from './IChartsReactPr
 import PieChart from "./PieChart";
 import BarChart from "./BarChart";
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import { string } from 'prop-types';
 
 export default class ChartsReact extends React.Component<IChartsReactProps, ChartsReactState> {
   constructor(props: IChartsReactProps) {
     super(props);
-    this.state={data: {}};
+    this.state={data: {}, listName: this.props.siteName};
   }
   
   public componentDidMount() {
@@ -40,8 +39,9 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
         borderWidth: 1
       }]
     };
+    this.setState({listName: this.props.siteName});
     //We gonna implement reading from list
-    this.readItems().then(items => {
+    this.readItems(this.props.siteName).then(items => {
       console.log("SharePoint Items",items);
       let spTitles = [];
       let spAmounts = [];
@@ -73,8 +73,8 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
   }
 
   // Read operation
-  private readItems() {    
-    return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('MonthlyBudget')/items`,
+  private readItems(listGuid: string) {    
+    return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists(guid'${listGuid}')/items`,
       SPHttpClient.configurations.v1,
       {
         headers: {
@@ -93,7 +93,7 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
     console.log('Render loading...',d);
     return (
       <div>
-        <h2>{this.props.siteName} {this.props.description}</h2>
+        <h2>{this.props.description}</h2>
         <PieChart data={d}/>
         <BarChart data={d}/>
       </div>
