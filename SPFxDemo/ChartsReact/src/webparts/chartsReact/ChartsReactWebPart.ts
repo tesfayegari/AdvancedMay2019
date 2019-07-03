@@ -23,7 +23,9 @@ export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsRea
       ChartsReact,
       {
         description: this.properties.description,
-        siteName: this.context.pageContext.web.title
+        siteName: this.context.pageContext.web.title,
+        spHttpClient: this.context.spHttpClient,
+        siteUrl: this.context.pageContext.web.absoluteUrl
       }
     );
 
