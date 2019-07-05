@@ -34,6 +34,9 @@ export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsRea
     ReactDom.render(element, this.domElement);
   }
 
+  protected get disableReactivePropertyChanges(): boolean{
+    return true;
+  }
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
   }

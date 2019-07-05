@@ -9,6 +9,7 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
   constructor(props: IChartsReactProps) {
     super(props);
     this.state={data: {}, listName: this.props.siteName};
+    console.log('Constructor');
   }
   
   public componentDidMount() {
@@ -39,9 +40,42 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
         borderWidth: 1
       }]
     };
+
+    const sampleData2={
+      labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+      datasets:[
+        {
+          label:'Population',
+          data:[617594,181045,153060,106519,105162,95072],
+          backgroundColor:[
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)'
+          ]
+        }
+      ]
+    };
     this.setState({listName: this.props.siteName});
     //We gonna implement reading from list
-    this.readItems(this.props.siteName).then(items => {
+    this.updateData();
+    console.log('Component did mount');
+    this.setState({data: sampleData2});
+  }
+
+  public componentWillReceiveProps(nextProps){
+    console.log('Checking this', nextProps, this.props);
+    if(this.props.siteName !== nextProps.siteName){
+      this.updateData(nextProps.siteName);
+    }
+  }
+
+  //Update data
+  private updateData(listName: string=this.props.siteName){
+    this.readItems(listName).then(items => {
       console.log("SharePoint Items",items);
       let spTitles = [];
       let spAmounts = [];
@@ -68,10 +102,7 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
       this.setState({data: spData});
 
     });
-
-    this.setState({data: sampleData});
   }
-
   // Read operation
   private readItems(listGuid: string) {    
     return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists(guid'${listGuid}')/items`,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+//import {  } from 'react-chartjs-2';
 import { ChartProps } from './IChartsReactProps';
 
 
