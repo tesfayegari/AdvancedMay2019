@@ -16,12 +16,12 @@
 
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
-    "title": { "default": "ChartsReact" },
+    "group": { "default": "MTM Webparts" },
+    "title": { "default": "MTM Charts" },
     "description": { "default": "ChartsReact description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "BarChart4",
     "properties": {
-      "description": "ChartsReact"
+      "description": "MTM Charts"
     }
   }]
 }

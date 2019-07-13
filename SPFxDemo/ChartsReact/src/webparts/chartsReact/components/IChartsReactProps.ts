@@ -2,7 +2,7 @@ import { SPHttpClient } from "@microsoft/sp-http";
 
 export interface IChartsReactProps {
   description: string;
-  siteName: string;
+  listName: string;
   spHttpClient: SPHttpClient;
   siteUrl: string;
 }

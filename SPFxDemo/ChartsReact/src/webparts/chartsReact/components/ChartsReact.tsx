@@ -8,7 +8,7 @@ import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 export default class ChartsReact extends React.Component<IChartsReactProps, ChartsReactState> {
   constructor(props: IChartsReactProps) {
     super(props);
-    this.state={data: {}, listName: this.props.siteName};
+    this.state={data: {}, listName: this.props.listName};
     console.log('Constructor');
   }
   
@@ -59,7 +59,7 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
         }
       ]
     };
-    this.setState({listName: this.props.siteName});
+    this.setState({listName: this.props.listName});
     //We gonna implement reading from list
     this.updateData();
     console.log('Component did mount');
@@ -68,13 +68,13 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
 
   public componentWillReceiveProps(nextProps){
     console.log('Checking this', nextProps, this.props);
-    if(this.props.siteName !== nextProps.siteName){
-      this.updateData(nextProps.siteName);
+    if(this.props.listName !== nextProps.listName){
+      this.updateData(nextProps.listName );
     }
   }
 
   //Update data
-  private updateData(listName: string=this.props.siteName){
+  private updateData(listName: string=this.props.listName){
     this.readItems(listName).then(items => {
       console.log("SharePoint Items",items);
       let spTitles = [];
@@ -85,7 +85,7 @@ export default class ChartsReact extends React.Component<IChartsReactProps, Char
         spTitles.push(item.Title);
         spAmounts.push(item.Amount);
         var r = Math.ceil(Math.random()*255), g=Math.ceil(Math.random()*255),b=Math.ceil(Math.random()*255);
-        spBgColors.push(`rgba(${r}, ${g}, ${b} ,0.2)`);
+        spBgColors.push(`rgba(${r}, ${g}, ${b} ,0.5)`);
         spBorderColors.push(`rgba(${r}, ${g}, ${b})`);
       });
       var spData ={

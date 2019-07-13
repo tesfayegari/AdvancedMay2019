@@ -20,12 +20,12 @@ export interface IChartsReactWebPartProps {
 export default class ChartsReactWebPart extends BaseClientSideWebPart<IChartsReactWebPartProps> {
 
   public render(): void {
-    console.log(this.context.pageContext.web.title);
+    console.log('List Name Selected ', this.properties.lists);
     const element: React.ReactElement<IChartsReactProps > = React.createElement(
       ChartsReact,
       {
         description: this.properties.description,
-        siteName: this.properties.lists,
+        listName: this.properties.lists,
         spHttpClient: this.context.spHttpClient,
         siteUrl: this.context.pageContext.web.absoluteUrl
       }
