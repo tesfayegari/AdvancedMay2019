@@ -9,11 +9,28 @@
           "manifest": "./src/webparts/chartsReact/ChartsReactWebPart.manifest.json"
         }
       ]
+    },
+    "news-slider-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/newsSlider/NewsSliderWebPart.js",
+          "manifest": "./src/webparts/newsSlider/NewsSliderWebPart.manifest.json"
+        }
+      ]
     }
   },
-  "externals": {},
+  "externals": {
+    "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+    "popper":"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+    "bootstrap": {
+      "path": "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+      "globalName": "bootstrap",
+      "globalDependencies": ["jquery","popper"]
+    }
+  },
   "localizedResources": {
     "ChartsReactWebPartStrings": "lib/webparts/chartsReact/loc/{locale}.js",
-    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "NewsSliderWebPartStrings": "lib/webparts/newsSlider/loc/{locale}.js"
   }
 }
