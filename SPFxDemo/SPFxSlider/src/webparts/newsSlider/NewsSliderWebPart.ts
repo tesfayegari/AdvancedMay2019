@@ -4,7 +4,8 @@ import { Version } from "@microsoft/sp-core-library";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneSlider
 } from "@microsoft/sp-property-pane";
 
 import { SPComponentLoader } from "@microsoft/sp-loader";
@@ -20,6 +21,7 @@ import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 export interface INewsSliderWebPartProps {
   description: string;
   lists: string;// | string[]; // Stores the list ID(s)
+  duration: number;
 }
 
 export interface IList {
@@ -52,23 +54,30 @@ export default class NewsSliderWebPart extends BaseClientSideWebPart<
       .then(() => {
         SPComponentLoader.loadScript(bootstrapJs)
           .then(() => {
-            (<any>jQuery(".carousel")).carousel({ interval: 2000 });
+            (<any>jQuery(".carousel")).carousel({ interval: this.properties.duration*1000 });
           });
       });
 
-    this.readItems(this.properties.lists).then((response) => {
-      let listItems = response.value;
-      const element: React.ReactElement<INewsSliderProps> = React.createElement(
-        NewsSlider,
-        {
-          items: listItems
-        }
-      );
-  
-      ReactDom.render(element, this.domElement);
-      (<any>jQuery(".carousel")).carousel({ interval: 2000 });
-    });
-    
+    if (this.properties.lists) {
+      this.readItems(this.properties.lists).then((response) => {
+        let listItems = response.value;
+        const element: React.ReactElement<INewsSliderProps> = React.createElement(
+          NewsSlider,
+          {
+            items: listItems
+          }
+        );
+
+        ReactDom.render(element, this.domElement);
+        (<any>jQuery(".carousel")).carousel({ interval: this.properties.duration*1000 });
+      });
+    } else {
+      this.domElement.innerHTML = `
+        <div class="alert alert-warning">
+          <strong>Warning!</strong> Please Configure Your webpart!</a>.
+        </div>
+        `
+    }
 
 
   }
@@ -113,6 +122,14 @@ export default class NewsSliderWebPart extends BaseClientSideWebPart<
               groupFields: [
                 PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneSlider('duration', {
+                  label: "Slider Duration",
+                  min: 2,
+                  max: 20,
+                  value: 3,
+                  showValue: true,
+                  step: 1
                 }),
                 PropertyFieldListPicker('lists', {
                   label: 'Select a slider list',

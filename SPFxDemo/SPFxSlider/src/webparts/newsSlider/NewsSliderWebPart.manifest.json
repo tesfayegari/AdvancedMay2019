@@ -21,7 +21,8 @@
     "description": { "default": "NewsSlider description" },
     "officeFabricIconFontName": "Slideshow",
     "properties": {
-      "description": "News Slider"
+      "description": "News Slider",
+      "duration": 3
     }
   }]
 }

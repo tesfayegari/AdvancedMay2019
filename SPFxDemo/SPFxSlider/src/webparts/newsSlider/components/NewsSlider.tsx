@@ -54,29 +54,32 @@ const SliderPrevNext = props => {
 
 export default class NewsSlider extends React.Component<INewsSliderProps, {}> {
   public render(): React.ReactElement<INewsSliderProps> {
-    const items = this.props.items.map((item,index) =>
-      <SliderItem key={item.ID} active={index === 0 ? true: false}>
+    const items = this.props.items.map((item, index) =>
+      <SliderItem key={item.ID} active={index === 0 ? true : false}>
         <img
-              className="d-block w-100"
-              src={item.imageUrl}
-              alt={item.Title}
-            />
-            <SliderCaption>
-              <h3>{item.Title}</h3>
-              <p>{item.Description}</p>
-              <a type="button" href={item.ulr} className="btn btn-primary">
-                {item.LinkLabel}{(item.LinkLabel)?'...': ''}
-              </a>
-            </SliderCaption>
+          className="d-block w-100"
+          src={item.imageUrl}
+          alt={item.Title}
+        />
+        <SliderCaption>
+          <h3>{item.Title}</h3>
+          <p>{item.Description}</p>
+          {(item.LinkLabel) ?
+            <a type="button" href={item.ulr} className="btn btn-primary">
+              {item.LinkLabel}...
+            </a>
+            : ''}
+
+        </SliderCaption>
       </SliderItem>
     );
-    console.log("ITems are", items);
+
     return (
-      <>        
+      <>
         <Slider items={this.props.items}>
-            {items}
+          {items}
         </Slider>
-        </>
+      </>
     );
   }
 }
