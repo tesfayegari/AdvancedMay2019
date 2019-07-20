@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "news-slider-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/newsSlider/NewsSliderWebPart.js",
+          "manifest": "./src/webparts/newsSlider/NewsSliderWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "NewsSliderWebPartStrings": "lib/webparts/newsSlider/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
