@@ -1,13 +1,28 @@
 import * as React from 'react';
+import SweetAlert  from "sweetalert-react";
 import { INewsSliderProps } from './INewsSliderProps';
+require('./../../../../node_modules/sweetalert/dist/sweetalert.css');
 
+interface IState{
+  show: boolean;
+}
 
-export default class NewsSlider extends React.Component<INewsSliderProps, {}> {
-  public render(): React.ReactElement<INewsSliderProps> {
+export default class NewsSlider extends React.Component<INewsSliderProps, IState> {
+   constructor(props: INewsSliderProps){
+     super(props);
+     this.state = {show: false};
+   }
+  
+  public render(): React.ReactElement<INewsSliderProps> {    
     return (
-      <div className="alert alert-success alert-dismissible">
-        <button type="button" className="close" data-dismiss="alert">&times;</button>
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      <div>
+      <button onClick={() => this.setState({ show: true })}>Alert</button>
+      <SweetAlert
+        show={true}
+        title="Demo"
+        text="SweetAlert in React"
+        onConfirm={() => this.setState({ show: false })}
+      />
     </div>
     );
   }

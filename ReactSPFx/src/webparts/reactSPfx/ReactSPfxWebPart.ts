@@ -6,24 +6,31 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
+import { SPComponentLoader } from "@microsoft/sp-loader";
 
 
+import * as strings from 'ReactSPfxWebPartStrings';
+import ReactSPfx from './components/ReactSPfx';
+import { IReactSPfxProps } from './components/IReactSPfxProps';
 
-import * as strings from 'NewsSliderWebPartStrings';
-import NewsSlider from './components/NewsSlider';
-import { INewsSliderProps } from './components/INewsSliderProps';
-
-export interface INewsSliderWebPartProps {
+export interface IReactSPfxWebPartProps {
   description: string;
 }
 
-export default class NewsSliderWebPart extends BaseClientSideWebPart<INewsSliderWebPartProps> {
+export default class ReactSPfxWebPart extends BaseClientSideWebPart<IReactSPfxWebPartProps> {
 
-  public render(): void {    
-    const element: React.ReactElement<INewsSliderProps > = React.createElement(
-      NewsSlider,
+  public render(): void {
+    let bootstrapCss =
+      "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css";
+    SPComponentLoader.loadCss(bootstrapCss);
+   
+    const element: React.ReactElement<IReactSPfxProps > = React.createElement(
+      ReactSPfx,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        spHttpClient: this.context.spHttpClient,
+        listName: 'EmployeeSpotlight',
+        webUrl: this.context.pageContext.web.absoluteUrl  
       }
     );
 
